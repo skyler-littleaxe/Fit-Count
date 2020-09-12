@@ -12,6 +12,10 @@ class SessionsController < ApplicationController
             @error = "Incorrect email or password"
             erb :'/sessions/login'
         end
-  
+    end
+
+    delete '/logout' do
+        session.clear
+        redirect "/"
     end
 end
