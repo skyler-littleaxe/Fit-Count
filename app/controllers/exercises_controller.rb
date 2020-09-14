@@ -2,6 +2,7 @@ class ExercisesController < ApplicationController
 
   # GET: /exercises
   get "/exercises" do
+    @excercises = Exercise.all
     erb :"/exercises/index.html"
   end
 
@@ -17,6 +18,7 @@ class ExercisesController < ApplicationController
 
   # GET: /exercises/5
   get "/exercises/:id" do
+    @exercise = Exercise.find(params[:id])
     erb :"/exercises/show.html"
   end
 
