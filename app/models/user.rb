@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
     has_secure_password
     validates :email, presence: true, uniqueness: true
-    has_many :exercises
+    has_many :exercises, foreign_key: "lifter_id"
 end
