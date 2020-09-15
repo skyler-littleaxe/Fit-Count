@@ -2,18 +2,24 @@ class ExercisesController < ApplicationController
 
   # GET: /exercises
   get "/exercises" do
-    @excercises = Exercise.all
+    @exercises = Exercise.all
     erb :"/exercises/index.html"
   end
 
   # GET: /exercises/new
   get "/exercises/new" do
+    @excercise = Exercise.new
     erb :"/exercises/new.html"
   end
 
   # POST: /exercises
   post "/exercises" do
-    redirect "/exercises"
+    @exercise = current_user.exercises.build(exercise_name: params[:exercise][:exercise_name], exercise_notes: params[:exercise][:exercise_notes])
+    if @exercise.save
+      redirect "/exercises"
+    else
+      erb :"/exercises/new.html"
+    end
   end
 
   # GET: /exercises/5
