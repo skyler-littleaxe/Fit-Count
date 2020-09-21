@@ -1,1 +1,36 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<h1>New Exercise</h1>
+
+<% if @excercise.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @exercise.errors.count %> error(s) prohibited this post from being saved:</h2>
+
+    <ul>
+    <% @exercise.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<form method="post" action="/exercises">
+  <p>
+    <div><label for="exercise_name">Exercise Name</label></div>
+    <input id="exercise_name" type="text" name="exercise[exercise_name]" value="<%= @exercise.exercise_name %>" />
+  </p>
+  <p>
+    <div><label for="sets">Sets</label></div>
+    <input id="sets" type="number" name="exercise[sets]" value="<%= @exercise.sets %>" />
+  </p>
+  <p>
+  <div><label for="reps">Reps</label></div>
+  <input id="reps" type="number" name="exercise[reps]" value="<%= @exercise.reps %>" />
+  </p>
+  <p>
+  <div><label for="lbs">Weight</label></div>
+  <input id="lbs" type="number" name="exercise[lbs]" value="<%= @exercise.lbs %>" />
+  </p>
+  <p>
+    <div><label for="notes">Notes</label></div>
+    <textarea rows="8" cols="45" id="notes" type="text" name="exercise[notes]"><%= @exercise.notes %></textarea>
+  </p>
+  <input type="submit" value="Create Post" />
+</form> 
