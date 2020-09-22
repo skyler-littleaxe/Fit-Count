@@ -18,6 +18,14 @@
     font-family: Sans-Serif;
     line-height: 18px;
   }
+  .error {
+    color: red;
+  }
+
+  .success {
+    color: rgb(32, 212, 32);
+  }
+
 
   .wrapper {
     background: #fff;
