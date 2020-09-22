@@ -12,8 +12,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    @exercises = Exercises.all
-    erb :"/exercises/index.html"
+    
+    erb :"/welcome"
   end
 
   not_found do

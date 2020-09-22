@@ -2,6 +2,7 @@ class ExercisesController < ApplicationController
 
   # GET: /exercises
   get "/exercises" do
+    redirect_if_not_logged_in
     @exercises = current_user.exercises
     erb :"/exercises/index.html"
   end
@@ -9,7 +10,7 @@ class ExercisesController < ApplicationController
   # GET: /exercises/new
   get "/exercises/new" do
     redirect_if_not_logged_in
-    @excercise = Exercise.new
+    @exercise = Exercise.new
     erb :"/exercises/new.html"
   end
 
@@ -45,12 +46,12 @@ class ExercisesController < ApplicationController
       flash[:success] = "Exercise successfully updated"
       redirect "/exercises/#{@exercise.id}"
     else
-      erb :"exercise/edit.html"
+      erb :"exercises/edit.html"
     end
   end
 
-  # DELETE: /exercises/5/delete
-  delete "/exercises/:id/delete" do
+  # DELETE: /exercises/5 - destroy
+  delete "/exercises/:id" do
     set_exercise
     redirect_if_not_authorized
     @exercise.destroy

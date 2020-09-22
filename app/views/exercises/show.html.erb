@@ -1,13 +1,13 @@
 <h1> Your Exercise</h1>
-<h1><%= @exercise.name %></h1>
+<h1><%= @exercise.exercise_name %></h1>
 <p><%= @exercise.lifter.email %></p>
-<p><%= @exercise.sets %></p>
-<p><%= @exercise.reps %></p>
-<p><%= @exercise.lbs %></p>
+<p><%= @exercise.sets %> sets </p>
+<p><%= @exercise.reps %> reps </p>
+<p><%= @exercise.lbs %> lbs </p>
 <p><%=@exercise.exercise_notes %></p>
-<% if authorize_exercise(@exercise) %>
+<% if authorize_lifter(@exercise) %>
   <div>
-    <a href="/exercises/<%= @exercises.id %>/edit"><button>Edit</button></a> 
+    <a href="/exercises/<%= @exercise.id %>/edit"><button>Edit</button></a> 
     <form method="post" action="/exercises/<%= @exercise.id %>" style="display: inline-block;">
       <input type="hidden" name="_method" value="delete" />
       <input type="submit" value="Delete" />

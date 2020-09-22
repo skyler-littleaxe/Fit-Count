@@ -11,7 +11,7 @@
     </ul>
   </div>
 <% end %>
-<form method="post" action="/exercise/<%= @exercise.id %>">
+<form method="post" action="/exercises/<%= @exercise.id %>">
   <input type="hidden" name="_method" value="patch" />
   <p>
     <div><label for="exercise_name">Exercise Name</label></div>
@@ -30,8 +30,8 @@
   <input id="lbs" type="number" name="exercise[lbs]" value="<%= @exercise.lbs %>" />
   </p>
   <p>
-    <div><label for="notes">Notes</label></div>
-    <textarea rows="8" cols="45" id="notes" type="text" name="exercise[notes]"><%= @exercise.notes %></textarea>
+    <div><label for="exercise_notes">Notes</label></div>
+    <textarea rows="8" cols="45" id="exercise_notes" type="text" name="exercise[exercise_notes]"><%= @exercise.exercise_notes %> </textarea>
   </p>
    
   <input type="submit" value="Update Exercise" />
