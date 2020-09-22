@@ -5,3 +5,12 @@
 <p><%= @exercise.reps %></p>
 <p><%= @exercise.lbs %></p>
 <p><%=@exercise.exercise_notes %></p>
+<% if authorize_exercise(@exercise) %>
+  <div>
+    <a href="/exercises/<%= @exercises.id %>/edit"><button>Edit</button></a> 
+    <form method="post" action="/exercises/<%= @exercise.id %>" style="display: inline-block;">
+      <input type="hidden" name="_method" value="delete" />
+      <input type="submit" value="Delete" />
+    </form>
+  </div>
+<% end %> 
