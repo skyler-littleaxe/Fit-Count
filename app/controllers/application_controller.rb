@@ -12,7 +12,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :welcome
+    @exercises = Exercises.all
+    erb :"/exercises/index.html"
   end
 
   not_found do
@@ -30,6 +31,10 @@ class ApplicationController < Sinatra::Base
     !!current_user
   end
 
-
-
+  def redirect_if_not_logged_in
+    if !logged_in?
+      flash[:error] = "You must be logged in to view that page"
+      redirect request.referrer || "/login"
+    end
+  end
 end
