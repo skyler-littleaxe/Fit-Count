@@ -2,7 +2,7 @@ class ExercisesController < ApplicationController
 
   # GET: /exercises
   get "/exercises" do
-    @exercises = Exercise.all
+    @exercises = current_user.exercises
     erb :"/exercises/index.html"
   end
 
@@ -14,7 +14,7 @@ class ExercisesController < ApplicationController
 
   # POST: /exercises
   post "/exercises" do
-    @exercise = current_user.exercises.build(exercise_name: params[:exercise][:exercise_name], exercise_notes: params[:exercise][:exercise_notes])
+    @exercise = current_user.exercises.build(exercise_name: params[:exercise][:exercise_name], exercise_notes: params[:exercise][:exercise_notes], sets: params[:exercise][:sets], reps: params[:exercise][:reps], lbs: params[:exercise][:lbs])
     if @exercise.save
       redirect "/exercises"
     else
