@@ -59,7 +59,7 @@ class ExercisesController < ApplicationController
 
   private 
 
-  def set_post 
+  def set_exercise
     @exercise = Exercise.find_by_id(params[:id])
     if @exercise.nil?
       flash[:error] = "Couldn't find a Post with id: #{params[:id]}"
